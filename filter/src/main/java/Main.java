@@ -1,13 +1,14 @@
 package filter.src.main.java;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
-
 
 public class Main {
 
     public static void main(String[] args) {
-        
+
         // Create user resource having various properties:
         Map<String, String> user = new LinkedHashMap<String, String>();
         user.put("firstname", "Joe");
@@ -15,15 +16,27 @@ public class Main {
         user.put("role", "administrator");
         user.put("age", "35");
 
-        // Create a filter which matches all administrators older than 30:
-        AbstractFilter filter = new BasicFilter(); // Create a filter using your API.
+        // Admin Filter usage
+        // Create a filter which matches all administrators older than 30
+        Filter adminFilter = new AdminFilter(30);
 
-        assert filter.matches(user); // Filter should match.
+        assert adminFilter.matches(user); // Filter should match.
+
         user.put("age", "25");
-        // assert !filter.matches(user); // Filter should not match.
+        assert !adminFilter.matches(user); // Filter should not match.
 
-        System.out.println("Hello world!");
-        System.out.println(user);
 
+        // Basic Filter usage
+        Map<String, String> propertiesToMatch = new HashMap<String, String>();
+        propertiesToMatch.put("firstname", "Joe");
+        propertiesToMatch.put("age", "35");
+
+        Filter basicFilter = new BasicFilter(propertiesToMatch);
+        assert !basicFilter.matches(user); // Filter should not match as the Age property doesnt match.
+
+        // Aggregate Filter usage
+        Filter aggregateFilter = new AggregateFilter(List.of(adminFilter, basicFilter));
+        
+        assert !aggregateFilter.matches(user);
     }
 }
