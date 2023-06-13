@@ -28,7 +28,7 @@ public class Main {
 
         // Basic Filter usage
         Map<String, String> propertiesToMatch = new HashMap<String, String>();
-        propertiesToMatch.put("firstname", "Joe");
+        propertiesToMatch.put("firstname", "joe");
         propertiesToMatch.put("age", "35");
 
         Filter basicFilter = new BasicFilter(propertiesToMatch);
