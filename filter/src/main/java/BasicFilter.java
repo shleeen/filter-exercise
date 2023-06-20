@@ -7,7 +7,7 @@ import java.util.Map;
  */
 public class BasicFilter implements Filter {
 
-    Map<String, String> propertiesToMatch;
+    private Map<String, String> propertiesToMatch;
 
     public BasicFilter(Map<String, String> propertiesToMatch) {
         this.propertiesToMatch = propertiesToMatch;
@@ -26,7 +26,6 @@ public class BasicFilter implements Filter {
         return true;
     }
 
-    @Override
     public String filterToString() {
         return "";
     }

@@ -8,9 +8,9 @@ import java.util.Map;
  */
 public class AdminFilter implements Filter {
 
-    static final String AGE_KEY = "age";
-    static final String ROLE_KEY = "role";
-    static final String ADMIN_VALUE = "administrator";
+    private static final String AGE_KEY = "age";
+    private static final String ROLE_KEY = "role";
+    private static final String ADMIN_VALUE = "administrator";
 
     Integer minimumAge = 0;
 

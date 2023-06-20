@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * An AggregateFilter that applies all the filters in the given list 
+ * AggregateFilter applies all the filters in the given list
  * and successfully matches only if all filters have matched for a given resource input.
  */
 public class AggregateFilter implements Filter {
 
-    List<Filter> filters;
+    private List<Filter> filters;
 
     public AggregateFilter(List<Filter> filtersList) {
         this.filters = filtersList;
